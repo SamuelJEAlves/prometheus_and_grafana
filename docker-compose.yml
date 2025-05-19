@@ -21,6 +21,8 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - LANG=pt_BR.UTF-8
+      - TZ=America/Sao_Paulo
     ports:
       - "3000:3000"
     depends_on:
@@ -28,11 +30,11 @@ services:
     networks:
       - monitoring
 
-  fastapi-exporter:
+  fastapi-collector: 
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: fastapi-exporter
+    container_name: fastapi-collector
     ports:
       - "8000:8000"
     depends_on:

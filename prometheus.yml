@@ -3,6 +3,9 @@ global:
   evaluation_interval: 10s  # Avalia regras de alerta e gravação a cada 10 segundos
 
 scrape_configs:
-  - job_name: 'fastapi-exporter'
+  - job_name: 'fastapi-collector'
     static_configs:
-      - targets: ['fastapi-exporter:8000']
+      - targets: ['fastapi-collector:8000']
+    basic_auth:
+      username: admin
+      password: 123
